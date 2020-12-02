@@ -20,6 +20,12 @@ const Navigation = () => (
       <li>
         <Link to={ROUTES.USER}>User</Link>
       </li>
+      <li>
+        <Link to={ROUTES.SIGN_UP}>Sign up</Link>
+      </li>
+      <li>
+        <Link to={ROUTES.SIGN_IN}>Sign in</Link>
+      </li>
     </ul>
   </div>
 );
