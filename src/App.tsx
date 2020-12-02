@@ -1,7 +1,6 @@
 import React from "react";
 import "./App.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-
 import { withAuthentication } from "./components/Session";
 
 import Navigation from "./components/Navigation/index";
