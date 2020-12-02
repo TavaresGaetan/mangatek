@@ -33,6 +33,12 @@ class Firebase {
 
   user = (uid) => this.db.ref(`users/${uid}`);
 
+  getUserData = (uid, setValue) => {
+    this.user(uid).on("value", (snapshot) => {
+      setValue(snapshot.val());
+    });
+  };
+
   users = () => this.db.ref("users");
 }
 
