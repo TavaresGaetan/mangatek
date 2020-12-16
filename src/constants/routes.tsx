@@ -8,3 +8,5 @@ export const MARKET = "/market";
 export const USER = "/user";
 export const WATCHLIST = "/watchlist";
 export const BOOKSHELF = "/bookshelf";
+export const SELLING = "/market/selling";
+

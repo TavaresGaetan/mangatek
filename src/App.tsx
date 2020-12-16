@@ -13,6 +13,7 @@ import * as ROUTES from "./constants/routes";
 import UserPage from "./components/UserPage";
 import Watchlist from "./components/UserPage/watchlist";
 import Bookshelf from "./components/UserPage/bookshelf";
+import SellingPage from "./components/MarketPage/SellingPage";
 
 const App = () => {
   return (
@@ -30,6 +31,7 @@ const App = () => {
         <Route path={ROUTES.BOOKSHELF} component={Bookshelf} />
         <Route path={ROUTES.SIGN_IN} component={SignInPage} />
         <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
+        <Route path={ROUTES.SELLING} component={SellingPage} />
       </div>
     </Router>
   );
