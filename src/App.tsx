@@ -7,6 +7,9 @@ import DiscoverPage from "./components/DiscoverPage/index";
 import MarketPage from "./components/MarketPage";
 import IndexPage from "./components/IndexPage/index";
 import * as ROUTES from "./constants/routes";
+import UserPage from "./components/UserPage";
+import Watchlist from "./components/UserPage/watchlist";
+import Bookshelf from "./components/UserPage/bookshelf";
 
 function App() {
   return (
@@ -19,6 +22,9 @@ function App() {
         <Route exact path={ROUTES.INDEX} component={IndexPage} />
         <Route path={ROUTES.DISCOVER} component={DiscoverPage} />
         <Route path={ROUTES.MARKET} component={MarketPage} />
+        <Route path={ROUTES.USER} component={UserPage} />
+        <Route path={ROUTES.WATCHLIST} component={Watchlist} />
+        <Route path={ROUTES.BOOKSHELF} component={Bookshelf} />
       </div>
     </Router>
   );
