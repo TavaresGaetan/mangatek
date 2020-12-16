@@ -40,6 +40,21 @@ class Firebase {
   };
 
   users = () => this.db.ref("users");
+
+  addItemForSelling(uid, item){
+    var marketData = {
+      ...item,
+      uid: uid
+    };
+
+    var newMarketKey = this.db.ref().child('markets').push().key;
+
+    var updates = {};
+    updates['/markets/' + newMarketKey] = marketData;
+    updates['/users/' + uid + '/selling-items/' + newMarketKey] = marketData;
+
+    return this.db.ref().update(updates);
+  }
 }
 
 export default Firebase;

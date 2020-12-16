@@ -1,6 +1,10 @@
 import React from "react";
+import { withFirebase } from "../../Firebase";
+import { withRouter } from "react-router-dom";
+import { withAuthorization } from "../../Session";
 
-const SellingPage = () => {
+
+const SellingPage = (props:any) => {
   const [sellingData, setSellingData]= React.useState({
     image: undefined,
     libelle:"", 
@@ -19,6 +23,11 @@ const SellingPage = () => {
   })
   const handleSubmit = (event : React.FormEvent <HTMLFormElement>) => {
     event.preventDefault()
+    props.firebase.auth.onAuthStateChanged((user: any) => {
+      if (user) {
+        props.firebase.addItemForSelling(user.uid, sellingData);
+      }
+    });
     console.log(sellingData)
   }
 
@@ -68,4 +77,7 @@ const SellingPage = () => {
 
 
 
-export default SellingPage;
+const condition = (authUser: any) => !!authUser;
+export default withRouter(
+  withFirebase(withAuthorization(condition)(SellingPage))
+);
