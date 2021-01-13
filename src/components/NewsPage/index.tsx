@@ -4,8 +4,8 @@ import Calendar from "./Calendar";
 const NewsPage = () => {
   return (
     <div>
+      news
       <Calendar />
-      coucou news
     </div>
   );
 };
