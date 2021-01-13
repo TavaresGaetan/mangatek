@@ -55,6 +55,19 @@ class Firebase {
 
     return this.db.ref().update(updates);
   }
+  getItem = (id, setValue) => {
+    this.db.ref(`markets/${id}`).on("value", (snapshot) => {
+      setValue(snapshot.val());
+    });
+  };
+
+
+  getItems = ( setValue) => {
+    this.db.ref(`markets`).on("value", (snapshot) => {
+      setValue(snapshot.val());
+    });
+  };
+
 }
 
 export default Firebase;
