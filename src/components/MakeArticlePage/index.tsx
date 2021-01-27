@@ -14,7 +14,12 @@ const MakeArticlePage = (props: any) => {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log("submited", articleData);
+    props.firebase.auth.onAuthStateChanged((user: any) => {
+      if (user) {
+        props.firebase.addArticle(user.uid, articleData);
+        window.location.reload(false);
+      }
+    });
   };
 
   const handleChange = (event: any) => {
@@ -41,6 +46,14 @@ const MakeArticlePage = (props: any) => {
           value={articleData.body}
         />
         <br />
+        <input
+          type="text"
+          onChange={handleChange}
+          value={articleData.signature}
+          name="signature"
+          id="signature"
+          placeholder="John Smith"
+        />
         <button type="submit">Valider</button>
       </form>
       <div>
@@ -49,7 +62,7 @@ const MakeArticlePage = (props: any) => {
         <div dangerouslySetInnerHTML={{ __html: articleData.body }}></div>
         <small>
           {" "}
-          {articleData.signature} {articleData.date}
+          {articleData.signature} date : {articleData.date}
         </small>
       </div>
     </>
