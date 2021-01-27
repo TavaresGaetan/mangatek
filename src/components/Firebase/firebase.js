@@ -64,7 +64,19 @@ class Firebase {
 
   getItems = ( setValue) => {
     this.db.ref(`markets`).on("value", (snapshot) => {
-      setValue(snapshot.val());
+      
+       
+      
+        let list = new Array ();
+        snapshot.forEach (function (data) {
+          let item = {
+            id: data.key, //this is to get the ID, if needed
+          ...data.val()
+          }
+          list.push (item);
+        });
+        setValue (list);
+      
     });
   };
 

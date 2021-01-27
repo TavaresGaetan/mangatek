@@ -15,7 +15,7 @@ import Watchlist from "./components/UserPage/watchlist";
 import Bookshelf from "./components/UserPage/bookshelf";
 import SellingPage from "./components/MarketPage/SellingPage";
 import BuyingPage from "./components/MarketPage/BuyingPage";
-
+import BuyingItemPage from "./components/MarketPage/BuyingPage/BuyingItemPage";
 
 const App = () => {
   return (
@@ -34,7 +34,8 @@ const App = () => {
         <Route path={ROUTES.SIGN_IN} component={SignInPage} />
         <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
         <Route path={ROUTES.SELLING} component={SellingPage} />
-        <Route path={ROUTES.BUYING} component={BuyingPage} />
+        <Route exact path={ROUTES.BUYING} component={BuyingPage} />
+        <Route path={ROUTES.BUYING_ITEM} component={BuyingItemPage} />
       </div>
     </Router>
   );
