@@ -1,6 +1,8 @@
 import React from "react";
 import { withFirebase } from "../Firebase";
 import { withRouter } from "react-router-dom";
+import * as ROUTES from "../../constants/routes";
+import { Link } from "react-router-dom";
 
 import Calendar from "./Calendar";
 
@@ -15,7 +17,9 @@ const NewsPage = (props: any) => {
   }, []);
   return (
     <div>
-      {user.admin ? <button>Créer un article</button> : null}
+      {user.admin ? (
+        <Link to={ROUTES.MAKE_ARTICLE}>Créer un article</Link>
+      ) : null}
       news
       <Calendar />
     </div>

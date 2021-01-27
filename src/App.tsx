@@ -15,6 +15,7 @@ import Watchlist from "./components/UserPage/watchlist";
 import Bookshelf from "./components/UserPage/bookshelf";
 import SellingPage from "./components/MarketPage/SellingPage";
 import NewsPage from "./components/NewsPage";
+import MakeArticlePage from "./components/MakeArticlePage";
 
 const App = () => {
   return (
@@ -34,6 +35,7 @@ const App = () => {
         <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
         <Route path={ROUTES.SELLING} component={SellingPage} />
         <Route path={ROUTES.NEWS} component={NewsPage} />
+        <Route path={ROUTES.MAKE_ARTICLE} component={MakeArticlePage} />
       </div>
     </Router>
   );

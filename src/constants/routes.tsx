@@ -9,4 +9,4 @@ export const USER = "/user";
 export const WATCHLIST = "/watchlist";
 export const BOOKSHELF = "/bookshelf";
 export const SELLING = "/market/selling";
-
+export const MAKE_ARTICLE = "/make-article";
