@@ -45,18 +45,29 @@ class Firebase {
 
   users = () => this.db.ref("users");
 
-  addItemForSelling(uid, item){
+  addItemForSelling(uid, item) {
     var marketData = {
       ...item,
-      uid: uid
+      uid: uid,
     };
 
-    var newMarketKey = this.db.ref().child('markets').push().key;
+    var newMarketKey = this.db.ref().child("markets").push().key;
 
     var updates = {};
-    updates['/markets/' + newMarketKey] = marketData;
-    updates['/users/' + uid + '/selling-items/' + newMarketKey] = marketData;
+    updates["/markets/" + newMarketKey] = marketData;
+    updates["/users/" + uid + "/selling-items/" + newMarketKey] = marketData;
 
+    return this.db.ref().update(updates);
+  }
+
+  addArticle(uid, article) {
+    var articleData = {
+      ...article,
+      uid: uid,
+    };
+    var updates = {};
+    var newArticleKey = this.db.ref().child("articles").push().key;
+    updates["/articles/" + newArticleKey] = articleData;
     return this.db.ref().update(updates);
   }
 }
