@@ -16,6 +16,8 @@ import Bookshelf from "./components/UserPage/bookshelf";
 import SellingPage from "./components/MarketPage/SellingPage";
 import NewsPage from "./components/NewsPage";
 import MakeArticlePage from "./components/MakeArticlePage";
+import BuyingPage from "./components/MarketPage/BuyingPage/";
+import BuyingItemPage from "./components/MarketPage/BuyingPage/BuyingItemPage";
 
 const App = () => {
   return (
@@ -36,6 +38,8 @@ const App = () => {
         <Route path={ROUTES.SELLING} component={SellingPage} />
         <Route path={ROUTES.NEWS} component={NewsPage} />
         <Route path={ROUTES.MAKE_ARTICLE} component={MakeArticlePage} />
+        <Route exact path={ROUTES.BUYING} component={BuyingPage} />
+        <Route path={ROUTES.BUYING_ITEM} component={BuyingItemPage} />
       </div>
     </Router>
   );

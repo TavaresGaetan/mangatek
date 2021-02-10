@@ -10,3 +10,5 @@ export const WATCHLIST = "/watchlist";
 export const BOOKSHELF = "/bookshelf";
 export const SELLING = "/market/selling";
 export const MAKE_ARTICLE = "/make-article";
+export const BUYING = "/market/buying";
+export const BUYING_ITEM = "/market/buying/:id";

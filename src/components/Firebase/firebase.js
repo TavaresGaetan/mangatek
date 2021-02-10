@@ -70,6 +70,31 @@ class Firebase {
     updates["/articles/" + newArticleKey] = articleData;
     return this.db.ref().update(updates);
   }
+  getItem = (id, setValue) => {
+    this.db.ref(`markets/${id}`).on("value", (snapshot) => {
+      setValue(snapshot.val());
+    });
+  };
+
+
+  getItems = ( setValue) => {
+    this.db.ref(`markets`).on("value", (snapshot) => {
+      
+       
+      
+        let list = new Array ();
+        snapshot.forEach (function (data) {
+          let item = {
+            id: data.key, //this is to get the ID, if needed
+          ...data.val()
+          }
+          list.push (item);
+        });
+        setValue (list);
+      
+    });
+  };
+
 }
 
 export default Firebase;
