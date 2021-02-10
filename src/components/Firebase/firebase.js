@@ -3,6 +3,7 @@ import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/database";
 import "firebase/storage";
+import 'firebase/firestore';
 
 const config = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -20,6 +21,7 @@ class Firebase {
     this.db = app.database();
 
     this.storage = firebase.storage();
+    this.firestore = app.firestore();
   }
 
   doCreateUserWithEmailAndPassword = (email, password) =>
@@ -80,7 +82,7 @@ class Firebase {
   getItems = ( setValue) => {
     this.db.ref(`markets`).on("value", (snapshot) => {
       
-       
+    
       
         let list = new Array ();
         snapshot.forEach (function (data) {
