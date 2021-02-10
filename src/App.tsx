@@ -17,7 +17,7 @@ import SellingPage from "./components/MarketPage/SellingPage";
 import NewsPage from "./components/NewsPage";
 import MakeArticlePage from "./components/MakeArticlePage";
 import BuyingPage from "./components/MarketPage/BuyingPage/";
-import BuyingItemPage from "./components/MarketPage/BuyingPage/BuyingItemPage";
+import BuyingItemPage from "./components/MarketPage/BuyingPage/BuyingItemPage.js";
 
 const App = () => {
   return (

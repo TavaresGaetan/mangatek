@@ -2,7 +2,7 @@ import React from "react";
 import { useParams, withRouter } from "react-router-dom";
 import { withFirebase } from "../../Firebase";
 
-function BuyingItemPage(props: any) {
+function BuyingItemPage(props) {
   const { id } = useParams();
 
   const [item, setItem] = React.useState({
