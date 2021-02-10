@@ -4,11 +4,12 @@ import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import Firebase, { FirebaseContext } from "./components/Firebase";
-import { ChakraProvider } from "@chakra-ui/react";
+import { ChakraProvider, ColorModeScript } from "@chakra-ui/react";
 
 ReactDOM.render(
   <ChakraProvider>
     <FirebaseContext.Provider value={new Firebase()}>
+      <ColorModeScript initialColorMode="dark" />
       <App />
     </FirebaseContext.Provider>
   </ChakraProvider>,

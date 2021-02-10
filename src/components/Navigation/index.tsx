@@ -3,8 +3,20 @@ import { Link } from "react-router-dom";
 import SignOutButton from "../SignOut";
 import { AuthUserContext } from "../Session";
 import * as ROUTES from "../../constants/routes";
-import { Box, Text, Stack, Flex } from "@chakra-ui/react";
-import { CloseIcon, TriangleDownIcon } from "@chakra-ui/icons";
+import {
+  Box,
+  Text,
+  Stack,
+  Flex,
+  useColorMode,
+  IconButton,
+} from "@chakra-ui/react";
+import {
+  CloseIcon,
+  TriangleDownIcon,
+  SunIcon,
+  MoonIcon,
+} from "@chakra-ui/icons";
 
 import Logo from "./Logo";
 
@@ -34,6 +46,7 @@ const MenuItem = ({ children, isLast, to = "/", ...rest }: any) => {
 const Navigation = ({ authUser }: any) => {
   const [isOpen, setIsOpen] = React.useState(false);
   const toggle = () => setIsOpen(!isOpen);
+  const { colorMode, toggleColorMode } = useColorMode();
   return (
     <Flex
       as="nav"
@@ -55,6 +68,12 @@ const Navigation = ({ authUser }: any) => {
           )
         }
       </AuthUserContext.Consumer>
+      <IconButton
+        onClick={toggleColorMode}
+        icon={colorMode === "light" ? <MoonIcon /> : <SunIcon />}
+        aria-label="Toggle Theme"
+        variant="ghost"
+      />
     </Flex>
   );
 };
