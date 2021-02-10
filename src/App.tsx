@@ -14,7 +14,7 @@ import UserPage from "./components/UserPage";
 import Watchlist from "./components/UserPage/watchlist";
 import Bookshelf from "./components/UserPage/bookshelf";
 import SellingPage from "./components/MarketPage/SellingPage";
-import BuyingPage from "./components/MarketPage/BuyingPage";
+import BuyingPage from "./components/MarketPage/BuyingPage/";
 import BuyingItemPage from "./components/MarketPage/BuyingPage/BuyingItemPage";
 
 const App = () => {
