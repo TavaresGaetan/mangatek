@@ -12,7 +12,7 @@ const SellingPage = (props:any) => {
     quantite:0,
     categorie:"",   
     etat:"",
-    auteur:"",
+    auteur:"", 
     studio:"",
     collection:"",
     format:"",
@@ -21,6 +21,7 @@ const SellingPage = (props:any) => {
     poids:0,
     materiaux:""
   })
+  
   const handleSubmit = (event : React.FormEvent <HTMLFormElement>) => {
     event.preventDefault()
     props.firebase.auth.onAuthStateChanged((user: any) => {

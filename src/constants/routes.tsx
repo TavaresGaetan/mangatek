@@ -9,4 +9,5 @@ export const USER = "/user";
 export const WATCHLIST = "/watchlist";
 export const BOOKSHELF = "/bookshelf";
 export const SELLING = "/market/selling";
+export const CHAT = "/chat";
 
