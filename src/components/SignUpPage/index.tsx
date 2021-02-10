@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { FirebaseContext } from "../Firebase";
 import { withFirebase } from "../Firebase";
-import { Link, withRouter } from "react-router-dom";
+import { Link as ReachLink, withRouter } from "react-router-dom";
+import { Link } from "@chakra-ui/react";
 
 import * as ROUTES from "../../constants/routes";
 
@@ -117,7 +118,10 @@ class SignUpFormBase extends Component<any, SignUpState> {
 
 const SignUpLink = () => (
   <p>
-    Don't have an account? <Link to={ROUTES.SIGN_UP}>Sign Up</Link>
+    Don't have an account?{" "}
+    <Link color="teal.500" as={ReachLink} to={ROUTES.SIGN_UP}>
+      Sign Up
+    </Link>
   </p>
 );
 
