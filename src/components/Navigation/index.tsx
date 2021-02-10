@@ -57,7 +57,15 @@ const Navigation = ({ authUser }: any) => {
       mb={8}
       p={8}
     >
-      <Logo w="100px" />
+      <Flex align="center" wrap="wrap">
+        <IconButton
+          onClick={toggleColorMode}
+          icon={colorMode === "light" ? <MoonIcon /> : <SunIcon />}
+          aria-label="Toggle Theme"
+          variant="ghost"
+        />
+        <Logo w="100px" />
+      </Flex>
       <MenuToggle toggle={toggle} isOpen={isOpen} />
       <AuthUserContext.Consumer>
         {(authUser) =>
@@ -68,12 +76,6 @@ const Navigation = ({ authUser }: any) => {
           )
         }
       </AuthUserContext.Consumer>
-      <IconButton
-        onClick={toggleColorMode}
-        icon={colorMode === "light" ? <MoonIcon /> : <SunIcon />}
-        aria-label="Toggle Theme"
-        variant="ghost"
-      />
     </Flex>
   );
 };
