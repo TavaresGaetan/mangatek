@@ -92,7 +92,6 @@ const NavigationAuth = ({ isOpen }: any) => (
       direction={["column", "row", "row", "row"]}
       pt={[4, 4, 0, 0]}
     >
-      <MenuItem to={ROUTES.SHARE}>Share</MenuItem>
       <MenuItem to={ROUTES.DISCOVER}>Discover</MenuItem>
       <MenuItem to={ROUTES.NEWS}>News</MenuItem>
       <MenuItem to={ROUTES.MARKET}>Market</MenuItem>
@@ -113,7 +112,6 @@ const NavigationNonAuth = ({ isOpen }: any) => (
       direction={["column", "row", "row", "row"]}
       pt={[4, 4, 0, 0]}
     >
-      <MenuItem to={ROUTES.SHARE}>Share</MenuItem>
       <MenuItem to={ROUTES.DISCOVER}>Discover</MenuItem>
       <MenuItem to={ROUTES.NEWS}>News</MenuItem>
       <MenuItem to={ROUTES.MARKET}>Market</MenuItem>

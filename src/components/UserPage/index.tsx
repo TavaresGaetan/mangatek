@@ -4,6 +4,8 @@ import { Link, withRouter } from "react-router-dom";
 import * as ROUTES from "../../constants/routes";
 import { FirebaseContext } from "../Firebase";
 import { withFirebase } from "../Firebase";
+import { Avatar, AvatarBadge, AvatarGroup, Wrap, WrapItem, Image, Center, Text, Button, ButtonGroup } from "@chakra-ui/react"
+
 
 const UserPage = () => {
 
@@ -81,22 +83,30 @@ class ProfileDetails extends Component<any, ProfileState> {
       
       render() {
             return <div>
+            <div>User PAGE</div>      
             <input type="file" onChange={this.handleChange} />
             <button onClick={() => {this.handleUpload(this.props.firebase.storage)}}>Upload</button>
-            <img src={this.state.url } height="300" width="400"/>
-            <div>{this.state.username}</div>
-            <div>{this.state.email}</div>         
-            <div>User PAGE</div>
+            <Center>
+            <Image borderRadius="full" boxSize= "250px" alt = {this.state.username} src= {this.state.url} />
+            </Center>
+            <Center>
+            <Text fontWeight="extrabold" fontSize="6x1"> 
+            {this.state.username}
+            </Text>
+            </Center>
+            <Center>
+            <Button colorScheme="green">10 Recommendations</Button>
+            </Center>
+            <Center>
+            <ButtonGroup variant="outline" spacing="10" marginTop="100">
             <Link to ={ROUTES.WATCHLIST}>
-            <button>
-                  Watchlist
-            </button>
+            <Button colorScheme="yellow">Watchlist</Button>
             </Link>
             <Link to ={ROUTES.BOOKSHELF}>
-            <button>
-            Bookshelf
-            </button>
+            <Button colorScheme="brown">Bookshelf</Button>
             </Link>
+            </ButtonGroup>         
+            </Center>
             </div>
             ;
       }
