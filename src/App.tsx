@@ -14,14 +14,11 @@ import UserPage from "./components/UserPage";
 import Watchlist from "./components/UserPage/watchlist";
 import Bookshelf from "./components/UserPage/bookshelf";
 import SellingPage from "./components/MarketPage/SellingPage";
-<<<<<<< HEAD
 import NewsPage from "./components/NewsPage";
 import MakeArticlePage from "./components/MakeArticlePage";
 import BuyingPage from "./components/MarketPage/BuyingPage/";
 import BuyingItemPage from "./components/MarketPage/BuyingPage/BuyingItemPage.js";
-=======
 import ChatPage from "./components/MarketPage/ChatPage";
->>>>>>> b4e1c30 ( Chat fonctionnel)
 
 const App = () => {
   return (
