@@ -18,6 +18,7 @@ import NewsPage from "./components/NewsPage";
 import MakeArticlePage from "./components/MakeArticlePage";
 import BuyingPage from "./components/MarketPage/BuyingPage/";
 import BuyingItemPage from "./components/MarketPage/BuyingPage/BuyingItemPage.js";
+import ChatPage from "./components/MarketPage/ChatPage";
 
 const App = () => {
   return (
@@ -40,6 +41,7 @@ const App = () => {
         <Route path={ROUTES.MAKE_ARTICLE} component={MakeArticlePage} />
         <Route exact path={ROUTES.BUYING} component={BuyingPage} />
         <Route path={ROUTES.BUYING_ITEM} component={BuyingItemPage} />
+        <Route path={ROUTES.CHAT} component={ChatPage} />
       </div>
     </Router>
   );

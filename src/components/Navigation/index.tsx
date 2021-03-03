@@ -96,10 +96,12 @@ const NavigationAuth = ({ isOpen }: any) => (
       <MenuItem to={ROUTES.NEWS}>News</MenuItem>
       <MenuItem to={ROUTES.MARKET}>Market</MenuItem>
       <MenuItem to={ROUTES.USER}>User</MenuItem>
+      <MenuItem to={ROUTES.CHAT}>Chat</MenuItem>
       <SignOutButton />
     </Stack>
   </Box>
 );
+
 const NavigationNonAuth = ({ isOpen }: any) => (
   <Box
     display={{ base: isOpen ? "block" : "none", md: "block" }}
