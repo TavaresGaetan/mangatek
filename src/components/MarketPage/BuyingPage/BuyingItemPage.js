@@ -1,3 +1,4 @@
+import { Button } from "@chakra-ui/button";
 import React from "react";
 import { useParams, withRouter } from "react-router-dom";
 import { withFirebase } from "../../Firebase";
@@ -20,7 +21,7 @@ function BuyingItemPage(props) {
     quantite: "",
     soustitre: "",
     studio: "",
-    uid: ""
+    uid: "",
   });
   React.useEffect(() => {
     props.firebase.getItem(id, setItem);
@@ -43,6 +44,19 @@ function BuyingItemPage(props) {
       <div>{item.soustitre}</div>
       <div>{item.studio}</div>
       <div>{item.uid}</div>
+      <Button
+        onClick={() => {
+          props.firebase.openOrCreateRoom(
+            props.firebase.auth.currentUser?.uid,
+            item?.uid,
+            props.firebase.firestore,
+            props.history
+          );
+        }}
+      >
+        {" "}
+        chat{" "}
+      </Button>
     </div>
   );
 }

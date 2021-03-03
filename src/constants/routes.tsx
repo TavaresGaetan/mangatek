@@ -12,5 +12,5 @@ export const SELLING = "/market/selling";
 export const MAKE_ARTICLE = "/make-article";
 export const BUYING = "/market/buying";
 export const BUYING_ITEM = "/market/buying/:id";
-export const CHAT = "/chat";
-
+export const CHATS = "/chats";
+export const CHAT = "/chats/:id";
