@@ -18,10 +18,7 @@ const [user] = useAuthState( props.firebase.auth);
 
   return (
     <div className="ChatPage">
-      <header>
-        <h1>⚛️🔥💬</h1>
-        <SignOut />
-      </header> 
+        <h1>⚛️🔥💬 Chat Room </h1>
       
       <section>
         {user ? <ChatRoom {...props}/> : <SignInPage/>}
