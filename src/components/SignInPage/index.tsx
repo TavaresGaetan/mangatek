@@ -22,7 +22,7 @@ const SignInPage = () => (
       <Box textAlign="center">
         <Heading>Sign in</Heading>
       </Box>
-      <Box my={4} textAlign="center">
+      <Box my={4} textAlign="center" minW="md">
         <SignInForm />
         <SignUpLink />
       </Box>
