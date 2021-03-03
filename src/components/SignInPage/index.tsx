@@ -5,12 +5,29 @@ import { SignUpLink } from "../SignUpPage";
 import { withFirebase } from "../Firebase";
 import * as ROUTES from "../../constants/routes";
 
+import {
+  FormControl,
+  Box,
+  FormLabel,
+  Button,
+  Text,
+  Flex,
+  Heading,
+  Input,
+} from "@chakra-ui/react";
+
 const SignInPage = () => (
-  <div>
-    <h1>SignIn</h1>
-    <SignInForm />
-    <SignUpLink />
-  </div>
+  <Flex width="full" align="center" justifyContent="center">
+    <Box p={2}>
+      <Box textAlign="center">
+        <Heading>Sign in</Heading>
+      </Box>
+      <Box my={4} textAlign="center" minW="md">
+        <SignInForm />
+        <SignUpLink />
+      </Box>
+    </Box>
+  </Flex>
 );
 
 const INITIAL_STATE = {
@@ -47,7 +64,9 @@ class SignInFormBase extends Component<any, SignInState> {
         this.props.history.push(ROUTES.INDEX);
       })
       .catch((error: Error) => {
+        console.log("eorr", error);
         this.setState({ error });
+        console.log("thisstate", this.state);
       });
 
     event.preventDefault();
@@ -64,25 +83,43 @@ class SignInFormBase extends Component<any, SignInState> {
 
     return (
       <form onSubmit={this.onSubmit}>
-        <input
-          name="email"
-          value={email}
-          onChange={this.onChange}
-          type="text"
-          placeholder="Email Address"
-        />
-        <input
-          name="password"
-          value={password}
-          onChange={this.onChange}
-          type="password"
-          placeholder="Password"
-        />
-        <button disabled={isInvalid} type="submit">
+        <FormControl id="email">
+          <FormLabel>Email</FormLabel>
+          <Input
+            name="email"
+            value={email}
+            onChange={this.onChange}
+            type="text"
+            placeholder="Email Address"
+            required
+          />
+        </FormControl>
+        <FormControl mt={6} id="password">
+          <FormLabel>Password</FormLabel>
+          <Input
+            name="password"
+            value={password}
+            onChange={this.onChange}
+            type="password"
+            placeholder="Password"
+          />
+        </FormControl>
+        <Button
+          colorScheme="teal"
+          variant="outline"
+          width="full"
+          mt={4}
+          mb={4}
+          disabled={isInvalid}
+          type="submit"
+        >
           Sign In
-        </button>
-
-        {error && <p>{error.message}</p>}
+        </Button>
+        {error && (
+          <Text fontSize="xs" color="red.400">
+            {error.message}
+          </Text>
+        )}
       </form>
     );
   }

@@ -1,15 +1,33 @@
 import React, { Component } from "react";
 import { FirebaseContext } from "../Firebase";
 import { withFirebase } from "../Firebase";
-import { Link, withRouter } from "react-router-dom";
+import { Link as ReachLink, withRouter } from "react-router-dom";
+import { Link } from "@chakra-ui/react";
 
 import * as ROUTES from "../../constants/routes";
 
+import {
+  FormControl,
+  Box,
+  FormLabel,
+  Button,
+  Text,
+  Flex,
+  Heading,
+  Input,
+} from "@chakra-ui/react";
+
 const SignUpPage = () => (
-  <div>
-    <h1>SignUp</h1>
-    <SignUpForm />
-  </div>
+  <Flex width="full" align="center" justifyContent="center">
+    <Box p={2}>
+      <Box textAlign="center">
+        <Heading>Sign up</Heading>
+      </Box>
+      <Box my={4} textAlign="center" minW="md">
+        <SignUpForm />
+      </Box>
+    </Box>
+  </Flex>
 );
 
 const INITIAL_STATE = {
@@ -24,7 +42,6 @@ type Error = {
   message?: string;
 };
 
-type SignUpProps = {};
 type SignUpState = {
   username?: string;
   email?: string;
@@ -77,37 +94,65 @@ class SignUpFormBase extends Component<any, SignUpState> {
       username === "";
     return (
       <form onSubmit={this.onSubmit}>
-        <input
-          name="username"
-          value={username}
-          onChange={this.onChange}
-          type="text"
-          placeholder="Full Name"
-        />
-        <input
-          name="email"
-          value={email}
-          onChange={this.onChange}
-          type="text"
-          placeholder="Email Address"
-        />
-        <input
-          name="passwordOne"
-          value={passwordOne}
-          onChange={this.onChange}
-          type="password"
-          placeholder="Password"
-        />
-        <input
-          name="passwordTwo"
-          value={passwordTwo}
-          onChange={this.onChange}
-          type="password"
-          placeholder="Confirm Password"
-        />
-        <button type="submit" disabled={isInvalid}>
+        <FormControl id="username">
+          <FormLabel>Username</FormLabel>
+          <Input
+            name="username"
+            value={username}
+            onChange={this.onChange}
+            type="text"
+            placeholder="Full Name"
+            required
+          />
+        </FormControl>
+        <FormControl mt={6} id="email">
+          <FormLabel>Email</FormLabel>
+          <Input
+            name="email"
+            value={email}
+            onChange={this.onChange}
+            type="text"
+            placeholder="Email Address"
+            required
+          />
+        </FormControl>
+        <FormControl mt={6} id="passwordOne">
+          <FormLabel>Password</FormLabel>
+          <Input
+            name="passwordOne"
+            value={passwordOne}
+            onChange={this.onChange}
+            type="password"
+            placeholder="Password"
+            required
+          />
+        </FormControl>
+        <FormControl mt={6} id="passwordTwo">
+          <FormLabel>Confirm Password</FormLabel>
+          <Input
+            name="passwordTwo"
+            value={passwordTwo}
+            onChange={this.onChange}
+            type="password"
+            placeholder="Confirm Password"
+          />
+        </FormControl>
+        <Button
+          colorScheme="teal"
+          variant="outline"
+          width="full"
+          mt={4}
+          mb={4}
+          disabled={isInvalid}
+          type="submit"
+        >
           Sign Up
-        </button>
+        </Button>
+        {error && (
+          <Text fontSize="xs" color="red.400">
+            {error.message}
+          </Text>
+        )}
 
         {error && <p>{error.message}</p>}
       </form>
@@ -117,7 +162,10 @@ class SignUpFormBase extends Component<any, SignUpState> {
 
 const SignUpLink = () => (
   <p>
-    Don't have an account? <Link to={ROUTES.SIGN_UP}>Sign Up</Link>
+    Don't have an account?{" "}
+    <Link color="teal.500" as={ReachLink} to={ROUTES.SIGN_UP}>
+      Sign Up
+    </Link>
   </p>
 );
 
