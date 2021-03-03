@@ -3,7 +3,10 @@ import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/database";
 import "firebase/storage";
-import 'firebase/firestore';
+import "firebase/firestore";
+
+import { v4 as uuidv4 } from "uuid";
+import * as ROUTES from "../../constants/routes";
 
 const config = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -78,25 +81,58 @@ class Firebase {
     });
   };
 
-
-  getItems = ( setValue) => {
+  getItems = (setValue) => {
     this.db.ref(`markets`).on("value", (snapshot) => {
-      
-    
-      
-        let list = new Array ();
-        snapshot.forEach (function (data) {
-          let item = {
-            id: data.key, //this is to get the ID, if needed
-          ...data.val()
-          }
-          list.push (item);
-        });
-        setValue (list);
-      
+      let list = new Array();
+      snapshot.forEach(function (data) {
+        let item = {
+          id: data.key, //this is to get the ID, if needed
+          ...data.val(),
+        };
+        list.push(item);
+      });
+      setValue(list);
     });
   };
 
+  // CHATS
+  openOrCreateRoom = async (uid1, uid2, firestore, history) => {
+    const id = uuidv4();
+    const roomsRef = firestore.collection("rooms");
+    const usersRef = firestore
+      .collection("users")
+      .doc(uid1)
+      .collection("rooms")
+      .doc(uid2);
+
+    const usersRef2 = firestore
+      .collection("users")
+      .doc(uid2)
+      .collection("rooms")
+      .doc(uid1);
+
+    await usersRef.get().then((docSnapshot) => {
+      if (docSnapshot.exists) {
+        usersRef.onSnapshot((doc) => {
+          console.log("doc", doc.data());
+          const roomRef = doc.data().roomRef;
+          roomRef.get().then((room) => {
+            console.log("ooom", room.id);
+            history.push(ROUTES.CHATS + "/" + room.id);
+          });
+        });
+      } else {
+        roomsRef.doc(id).set({ createdAt: Date.now().toString() });
+        usersRef.set({
+          roomRef: firestore.doc(`rooms/${id}`),
+        });
+        usersRef2.set({
+          roomRef: firestore.doc(`rooms/${id}`),
+        });
+        history.push(ROUTES.CHATS + "/" + id);
+      }
+    });
+  };
 }
 
 export default Firebase;
